@@ -99,13 +99,13 @@ namespace process_scheduling_algorithm
 
                 process.completion_time = completionTime;
 
-                process.turn_around_time += completionTime - process.arrival_time;
+                process.turn_around_time += Math.Max(completionTime - process.arrival_time, 0);
 
-                process.waiting_time = process.turn_around_time - process.burst_time;
+                process.waiting_time = Math.Max(process.turn_around_time - process.burst_time, 0);
 
-                firstGetCPUTime = completionTime - process.burst_time;
+                firstGetCPUTime = Math.Max(completionTime - process.burst_time, 0);
 
-                process.response_time = firstGetCPUTime - process.arrival_time;
+                process.response_time = Math.Max(firstGetCPUTime - process.arrival_time, 0);
 
 
             }
