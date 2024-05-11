@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gantt Chart</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        font-family: sans-serif;
+        box-sizing: border-box;
+        background-color: #3d4c41;
+        border: 2px solid #e6e6e6;
+        min-height: 100vh;
+      }
+      header {
+        color: #e6e6e6;
+        padding: 5px;
+        text-align: center;
+        font-size: 1.2rem;
+        border-bottom: 2px solid;
+        border-color: #e6e6e6;
+        box-shadow: 1px 3px 8px #e6e6e63d;
+      }
+      .gantt-chart-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        flex: 1;
+        flex-grow: 1;
+        padding: 20px;
+      }
+      .gantt-chart {
+        display: flex;
+        align-items: safe center;
+        justify-content: center;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        user-select: none;
+      }
+
+      ::-webkit-scrollbar {
+        height: 5px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #e6e6e6;
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 10px;
+      }
+      .box {
+        position: relative;
+        z-index: 2;
+        min-width: 100px;
+        max-width: 260px;
+        flex: 1;
+        height: 200px;
+        height: 80px;
+        background-color: #999999;
+        color: #e6e6e6;
+        border: solid white;
+        border-width: 2px 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 35px;
+      }
+
+      .gantt-chart > .box:last-child {
+        border-left-width: 1px;
+        border-right-width: 2px;
+      }
+      .gantt-chart > .box:first-child {
+        border-left-width: 2px;
+        border-right-width: 1px;
+      }
+      .start,
+      .end {
+        position: absolute;
+      }
+      .end {
+        left: 100%;
+        top: calc(100% + 5px);
+      }
+      .start {
+        right: calc(100%);
+        transform: translateX(100%);
+        top: calc(100% + 5px);
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 30px;
+        font-weight: bold;
+        color: #e6e6e6;
+        font-size: 1.5rem;
+      }
+      .details {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+      }
+      .details span {
+        margin: 20px;
+      }
+      table {
+        border: 2px solid #e6e6e6;
+        width: 100%;
+      }
+
+      th,
+      td {
+        border: 1px solid white;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Gantt Chart</h1>
+    </header>
+    <div class="gantt-chart-container">
+      <div class="gantt-chart">
+        <div class="box">
+          p1<span class="start">1</span> <span class="end">2</span>
+        </div>
+        <div class="box">p2 <span class="end">2</span></div>
+        <div class="box">p3<span class="end">2</span></div>
+      </div>
+      <div class="info">
+        <span>AVG</span>
+        <div class="details">
+          <span>Turn Around Time = 2.8ms</span>
+          <span>Waiting Time = 2.8ms</span>
+          <span>Response Time = 2.8ms</span>
+        </div>
+        <div class="table">
+          <h3>Details</h3>
+          <table>
+            <tr>
+              <th>Process</th>
+              <th>Arrival Time</th>
+              <th>Burst Time</th>
+              <th>Waiting Time</th>
+              <th>Turn Around Time</th>
+              <th>Response Time</th>
+              <th>Priority</th>
+            </tr>
+            <tr>
+              <td>p2</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>p3</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>1</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
